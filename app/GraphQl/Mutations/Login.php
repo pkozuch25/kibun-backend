@@ -25,13 +25,13 @@ class Login extends LoginService
         if (!$user) {
             $this->saveFailedLoginAttempt($args['device']);
             throw ValidationException::withMessages([
-                'email' => ['No such user in database'],
+                'email' => ["Couldn't find user with the provided email."],
             ]);
         }
         if (!Hash::check($args['password'], $user->password)) {
             $this->saveFailedLoginAttempt($args['device']);
             throw ValidationException::withMessages([
-                'email' => ['The provided credentials are incorrect.'],
+                'password' => ['Incorrect password.'],
             ]);
         }
 

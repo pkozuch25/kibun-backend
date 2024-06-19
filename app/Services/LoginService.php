@@ -34,11 +34,10 @@ class LoginService
             $this->lastLogin->update(['ufla_failed_attempts' => 0]);
         }
         if ($this->lastLogin?->ufla_failed_attempts == 5) {
-            $timeout = Carbon::now()->diffInSeconds(Carbon::parse($this->lastLogin->ufla_last_attempt)->addMinutes(5), false);
+            $timeout = round(Carbon::now()->diffInSeconds(Carbon::parse($this->lastLogin->ufla_last_attempt)->addMinutes(5), false));
             if ($timeout > 0) {
                 throw ValidationException::withMessages([
-                    'login' => ["Too many login attempts, try again in $timeout seconds"],
-                    'timeout' => $timeout,
+                    'login' => ["Too many login attempts, try again in $timeout seconds"]
                 ]);
                 return;
             }
