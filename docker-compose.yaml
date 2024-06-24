@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  web:
+    image: app-name:latest
+    build:
+      target: web
+      context: .
+    env_file:
+      - .env
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - artisan
+    networks:
+      - app-network
+
+  db:
+    platform: "linux/amd64"
+    image: mysql:5.7
+    env_file:
+      - .env
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: kibun-backend
+      MYSQL_ROOT_HOST: "%"
+    ports:
+      - "3306:3306"
+    networks:
+      - app-network
+
+  artisan:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    env_file:
+      - .env
+    command: php artisan migrate --force
+    networks:
+      - app-network
+
+volumes:
+  dbdata:
+
+
+networks:
+  app-network:
+    driver: bridge
