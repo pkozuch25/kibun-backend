@@ -1,0 +1,13 @@
+extend type Query @guard {
+    getUserPlaylists: [UserPlaylist]
+}
+
+extend type Mutation @guard {
+    createNewUserPlaylist(name: String!, image: Upload!): String!
+}
+
+type UserPlaylist {
+    id: Int @rename(attribute: "up_id")
+    name: String @rename(attribute: "up_name")
+    imageUrl: String @rename(attribute: "up_image_url")
+}

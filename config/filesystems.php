@@ -44,6 +44,13 @@ return [
             'throw' => false,
         ],
 
+        'user-playlists' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/user-playlists'),
+            'url' => 'storage/user-playlists',
+            'visibility' => 'private',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

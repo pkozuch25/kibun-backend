@@ -1,2 +1,3 @@
 #import auth.graphql
 #import user.graphql
+#import playlists.graphql
