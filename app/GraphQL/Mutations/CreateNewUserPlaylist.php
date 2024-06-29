@@ -23,7 +23,7 @@ class CreateNewUserPlaylist
             if ($uploaded) {
                 UserPlaylist::create([
                     'up_name' => $args['name'],
-                    'up_image_url' => 'https://kibun.w66024.pl' . Storage::url($uploaded),
+                    'up_image_url' => 'https://kibun.w66024.pl' . $uploaded,
                     'up_user_id' => Auth::id()
                 ]);
         return true;
