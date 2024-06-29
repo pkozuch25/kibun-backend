@@ -38,7 +38,7 @@ return [
 
         'public' => [
             'driver' => 'local',
-            'root' => storage_path('app/public'),
+            'root' => public_path(),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
             'throw' => false,
@@ -46,8 +46,8 @@ return [
 
         'user-playlists' => [
             'driver' => 'local',
-            'root' => storage_path('app/public/user-playlists'),
-            'url' => env('APP_URL') . '/storage/user-playlists',
+            'root' => storage_path('app/public'),
+            'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
         ],
 
