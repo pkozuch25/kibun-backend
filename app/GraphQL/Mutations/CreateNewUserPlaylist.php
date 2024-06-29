@@ -19,11 +19,11 @@ class CreateNewUserPlaylist
 
             $file = $args['image'];
 
-            $uploaded = Storage::disk('user-playlists')->putFile('user' . Auth::id() . '/' . $args['name'], $file);
+            $uploaded = Storage::disk('local')->putFile('user' . Auth::id() . '/' . $args['name'], $file);
             if ($uploaded) {
                 UserPlaylist::create([
                     'up_name' => $args['name'],
-                    'up_image_url' => asset('storage/user-playlists/' . $uploaded),
+                    'up_image_url' => Storage::url($uploaded),
                     'up_user_id' => Auth::id()
                 ]);
         return true;
