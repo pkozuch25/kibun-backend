@@ -2,6 +2,8 @@ extend type Query @guard {
     getUserPlaylists: [UserPlaylist]
 }
 
+@scalar(class: “Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Upload”)
+
 extend type Mutation @guard {
     createNewUserPlaylist(name: String!, image: Upload!): String!
 }
