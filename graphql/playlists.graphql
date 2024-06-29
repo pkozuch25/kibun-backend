@@ -10,7 +10,6 @@ extend type Mutation @guard {
     createNewUserPlaylist(name: String!, image: Upload!): String!
     addTrackToPlaylist(
         playlistId: Int!,
-        trackId: Int!,
         durationMs: Int!,
         trackName: String!,
         artistName: String!,

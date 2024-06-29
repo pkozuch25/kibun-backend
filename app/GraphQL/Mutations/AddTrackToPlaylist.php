@@ -14,7 +14,6 @@ class AddTrackToPlaylist
     {
         SongsInPlaylist::create([
             'sip_up_id' => $args['playlistId'],
-            'sip_track_id' => $args['trackId'],
             'sip_duration_ms' => $args['durationMs'],
             'sip_track_name' => $args['trackName'],
             'sip_artist_name' => $args['artistName'],
