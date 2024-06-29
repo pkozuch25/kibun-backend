@@ -13,7 +13,6 @@ class GetUserPlaylists
      */
     public function __invoke($_, array $args)
     {
-        dd(UserPlaylist::where('up_user_id', Auth::id())->withCount('tracksInPlaylist')->get());
         return UserPlaylist::where('up_user_id', Auth::id())->withCount('tracksInPlaylist');
     }
 }
