@@ -1,5 +1,6 @@
 extend type Query @guard {
     getUserPlaylists: [UserPlaylist] @paginate(defaultCount:100, maxCount: 100, builder: "App\\GraphQL\\Queries\\GetUserPlaylists")
+    getUserSongsInPlaylist(playlistId: Int!): [UserSongInPlaylist] @paginate(defaultCount:100, maxCount: 100, builder: "App\\GraphQL\\Queries\\GetUserSongsInPlaylist")
 }
 
 scalar Upload
@@ -7,6 +8,15 @@ scalar Upload
 
 extend type Mutation @guard {
     createNewUserPlaylist(name: String!, image: Upload!): String!
+    addTrackToPlaylist(
+        playlistId: Int!,
+        trackId: Int!,
+        durationMs: Int!,
+        trackName: String!,
+        artistName: String!,
+        artistAlbumName: String!,
+        trackImageUrl: String!,
+    ) : String!
 }
 
 type UserPlaylist {
@@ -14,4 +24,13 @@ type UserPlaylist {
     name: String @rename(attribute: "up_name")
     imageUrl: String @rename(attribute: "up_image_url")
     tracksCount: String @rename(attribute: "tracksInPlaylist_count")
+}
+
+type UserSongInPlaylist {
+    id: Int @rename(attribute: "sip_id")
+    durationMs: Int @rename(attribute: "sip_duration_ms")
+    trackName: String @rename(attribute: "sip_track_name")
+    artistName: String @rename(attribute: "sip_artist_name")
+    artistAlbumName: String @rename(attribute: "sip_artist_album_name")
+    trackImageUrl: String @rename(attribute: "sip_track_image_url")
 }
