@@ -1,5 +1,5 @@
 extend type Query @guard {
-    getUserPlaylists: [UserPlaylist]
+    getUserPlaylists: [UserPlaylist] @paginate(type: "paginator", defaultCount:100, maxCount: 100, builder: "App\\GraphQL\\Queries\\GetUserPlaylists")
 }
 
 scalar Upload
