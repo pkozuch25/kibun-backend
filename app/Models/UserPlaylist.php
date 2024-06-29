@@ -16,7 +16,7 @@ class UserPlaylist extends Model
     }
 
     public function tracksInPlaylist() {
-        return $this->hasmany(SongsInPlaylist::class, 'up_id', 'sip_up_id');
+        return $this->hasMany(SongsInPlaylist::class, 'sip_up_id', 'up_id');
     }
 
 }
