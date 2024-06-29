@@ -1,5 +1,5 @@
 extend type Query @guard {
-    getUserPlaylists: [UserPlaylist] @paginate(type: "paginator", defaultCount:100, maxCount: 100, builder: "App\\GraphQL\\Queries\\GetUserPlaylists")
+    getUserPlaylists: [UserPlaylist] @paginate(defaultCount:100, maxCount: 100, builder: "App\\GraphQL\\Queries\\GetUserPlaylists")
 }
 
 scalar Upload
@@ -13,4 +13,5 @@ type UserPlaylist {
     id: Int @rename(attribute: "up_id")
     name: String @rename(attribute: "up_name")
     imageUrl: String @rename(attribute: "up_image_url")
+    tracksCount: String @rename(attribute: "tracksInPlaylist_count")
 }
