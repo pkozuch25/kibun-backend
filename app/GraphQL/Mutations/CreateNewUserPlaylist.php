@@ -23,7 +23,7 @@ class CreateNewUserPlaylist
             if ($uploaded) {
                 UserPlaylist::create([
                     'up_name' => $args['name'],
-                    'up_image_url' => $uploaded,
+                    'up_image_url' => asset('storage/user-playlists/' . $uploaded),
                     'up_user_id' => Auth::id()
                 ]);
         return true;

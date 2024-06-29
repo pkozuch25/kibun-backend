@@ -47,8 +47,8 @@ return [
         'user-playlists' => [
             'driver' => 'local',
             'root' => storage_path('app/public/user-playlists'),
-            'url' => 'storage/user-playlists',
-            'visibility' => 'private',
+            'url' => env('APP_URL') . '/storage/user-playlists',
+            'visibility' => 'public',
         ],
 
         's3' => [
