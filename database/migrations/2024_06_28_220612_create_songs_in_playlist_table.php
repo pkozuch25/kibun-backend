@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('songs_in_playlist', function (Blueprint $table) {
             $table->bigIncrements('sip_id');
             $table->unsignedTinyInteger('sip_up_id');
-            $table->string('sip_track_id');
             $table->string('sip_track_name');
             $table->string('sip_artist_name');
             $table->string('sip_track_image_url');
