@@ -22,7 +22,7 @@ type UserPlaylist {
     id: Int @rename(attribute: "up_id")
     name: String @rename(attribute: "up_name")
     imageUrl: String @rename(attribute: "up_image_url")
-    tracksCount: String @rename(attribute: "tracks_in_playlist_count")
+    tracksCount: Int @rename(attribute: "tracks_in_playlist_count")
 }
 
 type UserSongInPlaylist {
